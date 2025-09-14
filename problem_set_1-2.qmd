@@ -71,7 +71,7 @@ nes2024 %>%
 ```
 
 ```         
-So according to skim data, the Some post-high school, no bachelor’s degree is the most common highest level of education
+So according to data, the Some post-high school, no bachelor’s degree is the most common highest level of education. The least common level of education is Less than high school.
 ```
 
 ### Part B
@@ -93,10 +93,9 @@ HighestEducation %>%
   ggplot(aes(x = totalcount, y = education, na.rm = T)) +
   geom_col()+
   theme_minimal()
- 
-
-
 ```
+
+The Some post-high school, no bachelor’s degree is the most common highest level of education. The least common level of education is Less than high school. And a notable share of cases fall into missing or non-substantive categories.
 
 ## Question 2
 
@@ -111,11 +110,10 @@ How often did individuals pay attention to what was going on in government and p
 ```{r}
 
 nes2024 %>% 
-  select(attention_to_politics) %>% 
-  table()
+  tabyl(attention_to_politics) 
 ```
+The most popular level is Most of the time; The least popular level is Never.
 
-The most popular level is "Most of the time"
 
 ### Part B
 
@@ -138,6 +136,9 @@ payattention %>%
  
 
 ```
+
+
+This distribution indicates that, prior to a U.S. Presidential Election, individuals tend to pay a lot of attention to politics.
 
 ## Question 3
 
@@ -167,11 +168,11 @@ skim(iq)
 
 The five-number summary:
 
-The max is `r`max(iq)
+The max is `r max(iq)`
 
-The min is `r`min(iq)
+The min is `r min(iq)`
 
-The median is `r`median(iq)
+The median is `r median(iq)`
 
 The first quartile is `r quantile(iq, .25)`
 
@@ -181,9 +182,11 @@ The mean is `r mean(iq)`
 
 And standard deviation is `r sd(iq)`
 
-Every value larger than `r mean(iq) + 1.5 * sd(iq)` and smaller than`r`mean(iq) - 1.5 \* sd(iq)\` is an outlier,
+The IQR is `r IQR<- quantile(iq, .75) - quantile(iq, .25)` `r IQR`
 
-so the outliers are `r iq [iq >= quantile(iq, .75) + 1.5 * sd(iq) ]` and `r iq [iq <= quantile(iq, .25) - 1.5 * sd(iq) ]`
+There is no data above `r  quantile(iq, .75) + 1.5 * IQR` and less than `r quantile(iq, .25)-1.5 * IQR`
+
+so there are not outliers 
 
 Part B
 
@@ -197,7 +200,9 @@ The distribution of data with large populations is normal distribution.
 ggplot()  + geom_density(mapping = aes(iq), fill = "#8D2F25")
 ```
 
-From the picture, we can see that compare with the normal distribution, the distribution among these students are more skew to lift, and more concentrates to the middle.
+From the picture, we can see that compare with the normal distribution, the distribution among these students are more skew to left, and more concentrates to the mean.
+
+So students as a group are smarter than overall population.
 
 ## Question 4
 
@@ -205,7 +210,7 @@ From the picture, we can see that compare with the normal distribution, the dist
 
 The ANES collects information about each respondent's demographics, including their race, age, household income, and party affiliation. Provide the "type" (categorical or continuous) of variable each of those demographic characteristics represents.
 
-Categorical: Race, Age, party affiliatoin
+Categorical: Race, Age, party affiliation
 
 Continuous: Household income
 
