@@ -1,0 +1,175 @@
+---
+title: "Problem Set 2"
+subtitle: "Due date: 23 September"
+format: 
+  html:
+    self-contained: true
+toc: true
+editor: visual
+execute: 
+  echo: true
+  warning: false
+---
+
+Please upload your completed assignment to the ELMs course site (under the assignments menu) and to your class Github repository. You need to upload both your Quarto document (with R code, as needed) and its rendered output (either as a PDF or HTML file).
+
+```{r}
+library(tidyverse) 
+library(skimr) 
+library(janitor) 
+library(ggsci) 
+library(RColorBrewer) 
+library(paletteer) 
+library(devtools)
+library(polisciols)
+```
+
+**Total points: 25**
+
+## Question 1
+
+*Points: 10*
+
+Suppose I want to examine the hypothesis that consuming political news coverage from cable network channels (e.g., CNN, MSNBC, Fox News, etc.) causes citizens to have less trust in government than if they were to consume it from mainstream print media (e.g., New York Times, Wall Street Journal, etc.). What is more, suppose that I believe that this effect is greatest among "young" citizens. Design the contours of an experiment to test this proposition (and be sure to sketch the key elements of the experimental design). Second, briefly describe any significant shortcomings that the experimental design might have.
+
+*My Answer
+I will conduct an experiment by distributing a survey through social media platforms (X, Facebook, TikTok). The survey will provide respondents(collect 1000, from all age-group) with news either 1. from cable television and 2. from mainstream print media. Besides, a portion of respondents, serving as the control group, will not read any political news in the survey. Respondents will then answer questions regarding their level of trust in government, which will allow us to assess whether exposure to political news decreases citizens’ trust in government.
+
+This experimental design, however, entails certain shortcomings. First, because younger people tend to use social media more frequently, our sample is likely to include a disproportionately larger number of younger respondents and fewer older respondents. Second, since individuals who voluntarily participate in a survey distributed via social media may already be less influenced by mainstream print media. Finally, selective bias is also a concern, as people with different political orientations tend to use different social media platforms (X, Facebook, TikTok). Their original political opinions may, in turn, shape their levels of trust in government.
+
+## Question 2
+
+*Points: 10*
+
+Below are four hypothetical research designs to determine the effects of democratic governance on the funding of educational institutions. Briefly evaluate each sampling design in terms of its: (1) sampling variability; and, (2) sources of potential bias.
+
+A.  A sample of educational funding levels for every country in Europe for each of the last 100 years.
+
+There is no variability, all of EU countries are include in the sample. 
+
+The bias may exist in sampling process. Some individuals(EU countries) in the population (the world) are more likely to be included in the sample than others. EU is richer than most other areas, and they may just have more funding.
+
+B.  A sample of educational funding levels in five randomly picked countries drawn from the global population of countries for each of the last 10 years.
+
+There is a very high variability, the amount of the random sample is just five.
+
+There is no bias as it is a random sample.
+
+C.  A survey of educational administrators that yields responses that allow for a comparison of educational funding levels in Russia and the United States for the six-year period from 2010 to 2015.
+
+We do not know the sample size and population size, so there may be a variability, depend on these size.
+
+There is a high bias as the sample only include respondants from two countries, but we want to study global effects.
+
+D.  A sample of 75 randomly selected countries' educational funding levels for each of the past 25 years.
+
+Low variability, sample size 75 is good for the question. 
+
+If the random sample happens to include many countries from one region (e.g., Africa), results may reflect regional history rather than a general democracy effect. But as a it is a random sample, the bias should be very low.
+
+
+## Question 3
+
+*Points: 5*
+
+The COVID-19 pandemic wreaked havoc on the global economy. People became sick or died, supply chains snapped, and we all sheltered behind strict national borders or in our homes. We can see the effect of these changes when we look at how the growth of countries' Gross Domestic Product (GDP) changed between 2019 and the global pandemic's start in 2020.
+
+::: callout-note
+GDP is a popular measure of a country's annual economic output. Its annual growth tends to be approximately Normally distributed.
+:::
+
+```{r}
+library(tidyverse)
+library(wbstats)
+
+gdp_growth_df <- wb_data("NY.GDP.MKTP.KD.ZG", 
+                         start_date = 2019, 
+                         end_date = 2020, 
+                         return_wide = F)
+
+ggplot(gdp_growth_df, aes(x = value, fill = factor(date))) + 
+  geom_density(alpha = 0.75) + 
+  theme_minimal() + 
+  theme(plot.title = element_text(face = "bold"),
+        plot.title.position = "plot") + 
+  labs(title = "Countries' annual percentage growth rate of GDP in 2019 and 2020",
+       x = "Annual growth in GDP (%)",
+       y = "Density",
+       fill = "Year",
+       caption = "Source: World Bank")
+```
+
+### Part A
+
+*Points: 2*
+
+Describe the distribution of all countries' annual GDP growth rates in 2019 (found in the `gdp_growth_df` dataframe). Do the same for 2020. Include in those descriptions their five-number summaries.
+
+```{r}
+
+gdp2019 <- gdp_growth_df %>% 
+  filter(date == 2019) 
+
+gdp2020 <- gdp_growth_df %>% 
+  filter(date == 2020)
+
+summary(gdp2019$value)
+
+summary(gdp2020$value)
+
+```
+
+For 2019 The five-number summary:
+
+The max is `r max(gdp2019$value , na.rm = T)`
+
+The min is `r min(gdp2019$value , na.rm = T)`
+
+The median is `r median(gdp2019$value , na.rm = T)`
+
+The first quartile is `r quantile(gdp2019$value , .25, na.rm = T)`
+
+The third quartile is `r quantile(gdp2019$value , .75, na.rm = T)`
+
+This distribution is normal distribution and cluster on the median, 2.824. The spread is between -11.447 and 23.412.
+
+For 2020 The five-number summary:
+
+The max is `r max(gdp2020$value , na.rm = T)`
+
+The min is `r min(gdp2020$value , na.rm = T)`
+
+The median is `r median(gdp2020$value , na.rm = T)`
+
+The first quartile is `r quantile(gdp2020$value , .25, na.rm = T)`
+
+The third quartile is `r quantile(gdp2020$value , .75, na.rm = T)`
+
+The distribution is a little skew to left and less cluster on the median, -3.815, which is negative. The spread is between -54.336 and 43.480.
+
+### Part B
+
+*Points: 2*
+
+Calculate the mean and standard deviation of all countries' annual GDP growth rates in 2019. Do the same for 2020.
+
+For 2019
+
+The mean is `r mean(gdp2019$value , na.rm = T)`
+
+And standard deviation is `r sd(gdp2019$value , na.rm = T)`
+
+For 2020
+
+The mean is `r mean(gdp2020$value , na.rm = T)`
+
+And standard deviation is `r sd(gdp2020$value , na.rm = T)`
+
+### Part C
+
+*Points: 1*
+
+Compare the mean and standard deviation of GDP growth rates in 2019 with those in 2020. What, generally, happened to each country's economy? Do not use the words or phrases "mean" or "standard deviation" in your answer.
+
+In 2019, most countries' economic growth is steady and positive like the normal years, and the spread of growth rates across countries was relatively narrow. However, in 2020, the most country saw its economy contract, and the spread of growth rates outcomes across countries became much wider. While a few nations still grew, many suffered sharp declines, reflecting the global economic shock of the COVID-19 pandemic.
+
