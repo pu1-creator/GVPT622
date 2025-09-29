@@ -2298,14 +2298,14 @@ vertical-align: -.125em;
 <p>Using the <code>nes2024</code> data set in the <code>polisciols</code> R package, construct a cross-tab of the relationship between <code>attention_to_politics</code> and <code>education</code>.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_crosstab</span>(attention_to_politics <span class="sc">~</span> education, <span class="at">data =</span> nes2024)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_crosstab</span>(education <span class="sc">~</span> attention_to_politics, <span class="at">data =</span> nes2024)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <!-- preamble start -->
 
     <script>
 
-      function styleCell_82pn6ui0in9gkrljvk76(i, j, css_id) {
-          var table = document.getElementById("tinytable_82pn6ui0in9gkrljvk76");
+      function styleCell_m162lsipjcsxdic78gx1(i, j, css_id) {
+          var table = document.getElementById("tinytable_m162lsipjcsxdic78gx1");
           var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -2314,8 +2314,8 @@ vertical-align: -.125em;
               console.warn(`Cell at (${i}, ${j}) not found.`);
           }
       }
-      function spanCell_82pn6ui0in9gkrljvk76(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_82pn6ui0in9gkrljvk76");
+      function spanCell_m162lsipjcsxdic78gx1(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_m162lsipjcsxdic78gx1");
         const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
         if (!targetCell) {
           console.warn(`Cell at (${i}, ${j}) not found.`);
@@ -2346,18 +2346,18 @@ vertical-align: -.125em;
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '16', j: 3 }, { i: '16', j: 8 }, { i: '16', j: 7 }, { i: '16', j: 4 }, { i: '16', j: 9 }, { i: '16', j: 2 }, { i: '16', j: 6 }, { i: '16', j: 5 }, { i: '16', j: 10 },  ], css_id: 'tinytable_css_gxaj9z83jp25jr3sxwr2',}, 
-          { positions: [ { i: '6', j: 2 }, { i: '10', j: 2 }, { i: '7', j: 2 }, { i: '12', j: 2 }, { i: '1', j: 2 }, { i: '14', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '13', j: 2 }, { i: '10', j: 3 }, { i: '15', j: 2 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '5', j: 6 }, { i: '4', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '9', j: 3 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '5', j: 2 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 }, { i: '5', j: 7 }, { i: '11', j: 2 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '5', j: 3 }, { i: '12', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 }, { i: '15', j: 5 }, { i: '5', j: 8 }, { i: '11', j: 3 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '11', j: 8 }, { i: '6', j: 6 }, { i: '7', j: 6 }, { i: '8', j: 6 }, { i: '9', j: 6 }, { i: '10', j: 6 }, { i: '5', j: 4 }, { i: '12', j: 6 }, { i: '13', j: 6 }, { i: '14', j: 6 }, { i: '15', j: 6 }, { i: '5', j: 9 }, { i: '11', j: 4 }, { i: '1', j: 7 }, { i: '2', j: 7 }, { i: '3', j: 7 }, { i: '4', j: 7 }, { i: '11', j: 9 }, { i: '6', j: 7 }, { i: '7', j: 7 }, { i: '8', j: 7 }, { i: '9', j: 7 }, { i: '10', j: 7 }, { i: '11', j: 7 }, { i: '12', j: 7 }, { i: '13', j: 7 }, { i: '14', j: 7 }, { i: '15', j: 7 }, { i: '5', j: 10 }, { i: '11', j: 5 }, { i: '1', j: 8 }, { i: '2', j: 8 }, { i: '3', j: 8 }, { i: '4', j: 8 }, { i: '11', j: 10 }, { i: '6', j: 8 }, { i: '7', j: 8 }, { i: '8', j: 8 }, { i: '9', j: 8 }, { i: '10', j: 8 }, { i: '7', j: 9 }, { i: '12', j: 8 }, { i: '13', j: 8 }, { i: '14', j: 8 }, { i: '15', j: 8 }, { i: '12', j: 9 }, { i: '11', j: 6 }, { i: '1', j: 9 }, { i: '2', j: 9 }, { i: '3', j: 9 }, { i: '4', j: 9 }, { i: '1', j: 10 }, { i: '6', j: 9 }, { i: '3', j: 10 }, { i: '8', j: 9 }, { i: '9', j: 9 }, { i: '10', j: 9 }, { i: '7', j: 10 }, { i: '8', j: 10 }, { i: '13', j: 9 }, { i: '14', j: 9 }, { i: '15', j: 9 }, { i: '12', j: 10 }, { i: '13', j: 10 }, { i: '14', j: 10 }, { i: '2', j: 10 }, { i: '15', j: 10 }, { i: '4', j: 10 }, { i: '9', j: 10 }, { i: '6', j: 10 }, { i: '10', j: 10 },  ], css_id: 'tinytable_css_zn13vypzift5gq28sgyl',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 7 }, { i: '0', j: 6 }, { i: '0', j: 10 }, { i: '0', j: 3 }, { i: '0', j: 8 }, { i: '0', j: 5 }, { i: '0', j: 4 }, { i: '0', j: 9 },  ], css_id: 'tinytable_css_ec69zdurn9kfbvjzw8pe',}, 
-          { positions: [ { i: '16', j: 0 }, { i: '16', j: 1 },  ], css_id: 'tinytable_css_0q419zz11xeg8oakdpo4',}, 
-          { positions: [ { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '5', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 }, { i: '9', j: 0 }, { i: '10', j: 0 }, { i: '11', j: 0 }, { i: '12', j: 0 }, { i: '13', j: 0 }, { i: '14', j: 0 }, { i: '15', j: 0 }, { i: '12', j: 1 }, { i: '4', j: 0 }, { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 },  ], css_id: 'tinytable_css_dq4xraxe1gvbbs2zfbyq',}, 
-          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 },  ], css_id: 'tinytable_css_5gvfe7f6wwy0mpiqy5zg',}, 
+          { positions: [ { i: '18', j: 7 }, { i: '18', j: 5 }, { i: '18', j: 3 }, { i: '18', j: 8 }, { i: '18', j: 6 }, { i: '18', j: 4 }, { i: '18', j: 2 }, { i: '18', j: 9 },  ], css_id: 'tinytable_css_0unnxwt56rqp27kfpwho',}, 
+          { positions: [ { i: '3', j: 2 }, { i: '1', j: 2 }, { i: '7', j: 2 }, { i: '5', j: 2 }, { i: '11', j: 2 }, { i: '9', j: 2 }, { i: '14', j: 2 }, { i: '2', j: 2 }, { i: '16', j: 2 }, { i: '4', j: 2 }, { i: '1', j: 5 }, { i: '6', j: 2 }, { i: '1', j: 3 }, { i: '8', j: 2 }, { i: '3', j: 3 }, { i: '10', j: 2 }, { i: '5', j: 3 }, { i: '12', j: 2 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '2', j: 3 }, { i: '16', j: 3 }, { i: '4', j: 3 }, { i: '1', j: 6 }, { i: '6', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '13', j: 2 }, { i: '16', j: 4 }, { i: '15', j: 2 }, { i: '1', j: 7 }, { i: '17', j: 2 }, { i: '3', j: 7 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '11', j: 5 }, { i: '12', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 }, { i: '15', j: 5 }, { i: '16', j: 5 }, { i: '15', j: 3 }, { i: '1', j: 8 }, { i: '17', j: 3 }, { i: '3', j: 8 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '5', j: 6 }, { i: '6', j: 6 }, { i: '7', j: 6 }, { i: '8', j: 6 }, { i: '9', j: 6 }, { i: '10', j: 6 }, { i: '11', j: 6 }, { i: '12', j: 6 }, { i: '13', j: 6 }, { i: '14', j: 6 }, { i: '15', j: 6 }, { i: '16', j: 6 }, { i: '15', j: 4 }, { i: '1', j: 9 }, { i: '17', j: 4 }, { i: '3', j: 9 }, { i: '2', j: 7 }, { i: '5', j: 9 }, { i: '4', j: 7 }, { i: '5', j: 7 }, { i: '6', j: 7 }, { i: '7', j: 7 }, { i: '8', j: 7 }, { i: '9', j: 7 }, { i: '10', j: 7 }, { i: '11', j: 7 }, { i: '12', j: 7 }, { i: '13', j: 7 }, { i: '14', j: 7 }, { i: '15', j: 7 }, { i: '16', j: 7 }, { i: '17', j: 7 }, { i: '12', j: 8 }, { i: '17', j: 5 }, { i: '14', j: 8 }, { i: '2', j: 8 }, { i: '16', j: 8 }, { i: '4', j: 8 }, { i: '5', j: 8 }, { i: '6', j: 8 }, { i: '7', j: 8 }, { i: '8', j: 8 }, { i: '9', j: 8 }, { i: '10', j: 8 }, { i: '11', j: 8 }, { i: '6', j: 9 }, { i: '13', j: 8 }, { i: '8', j: 9 }, { i: '15', j: 8 }, { i: '10', j: 9 }, { i: '17', j: 8 }, { i: '12', j: 9 }, { i: '17', j: 6 }, { i: '14', j: 9 }, { i: '2', j: 9 }, { i: '16', j: 9 }, { i: '4', j: 9 }, { i: '9', j: 9 }, { i: '7', j: 9 }, { i: '13', j: 9 }, { i: '11', j: 9 }, { i: '17', j: 9 }, { i: '15', j: 9 },  ], css_id: 'tinytable_css_47urda90lvy6l8nv1e9i',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 9 }, { i: '0', j: 7 }, { i: '0', j: 5 }, { i: '0', j: 3 }, { i: '0', j: 8 }, { i: '0', j: 6 }, { i: '0', j: 4 },  ], css_id: 'tinytable_css_tr1nuzndd2iu85iivzfl',}, 
+          { positions: [ { i: '18', j: 0 }, { i: '18', j: 1 },  ], css_id: 'tinytable_css_ysy865uk8vn5f2gowibs',}, 
+          { positions: [ { i: '1', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '2', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 }, { i: '9', j: 0 }, { i: '10', j: 0 }, { i: '11', j: 0 }, { i: '12', j: 0 }, { i: '13', j: 0 }, { i: '14', j: 0 }, { i: '15', j: 0 }, { i: '16', j: 0 }, { i: '17', j: 0 }, { i: '12', j: 1 }, { i: '6', j: 0 }, { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '16', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '17', j: 1 },  ], css_id: 'tinytable_css_es7enjav7jlh8b3173sf',}, 
+          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 },  ], css_id: 'tinytable_css_8ehau2agp6llmp45gjem',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_82pn6ui0in9gkrljvk76(cell.i, cell.j, group.css_id);
+                  styleCell_m162lsipjcsxdic78gx1(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -2365,240 +2365,247 @@ vertical-align: -.125em;
 
     <style>
 
-.table td.tinytable_css_gxaj9z83jp25jr3sxwr2, .table th.tinytable_css_gxaj9z83jp25jr3sxwr2 { text-align: right; border-bottom: solid #d3d8dc 0.1em; }
-.table td.tinytable_css_zn13vypzift5gq28sgyl, .table th.tinytable_css_zn13vypzift5gq28sgyl { text-align: right; }
-.table td.tinytable_css_ec69zdurn9kfbvjzw8pe, .table th.tinytable_css_ec69zdurn9kfbvjzw8pe { text-align: right; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-.table td.tinytable_css_0q419zz11xeg8oakdpo4, .table th.tinytable_css_0q419zz11xeg8oakdpo4 { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
-.table td.tinytable_css_dq4xraxe1gvbbs2zfbyq, .table th.tinytable_css_dq4xraxe1gvbbs2zfbyq { text-align: left; }
-.table td.tinytable_css_5gvfe7f6wwy0mpiqy5zg, .table th.tinytable_css_5gvfe7f6wwy0mpiqy5zg { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+.table td.tinytable_css_0unnxwt56rqp27kfpwho, .table th.tinytable_css_0unnxwt56rqp27kfpwho { text-align: right; border-bottom: solid #d3d8dc 0.1em; }
+.table td.tinytable_css_47urda90lvy6l8nv1e9i, .table th.tinytable_css_47urda90lvy6l8nv1e9i { text-align: right; }
+.table td.tinytable_css_tr1nuzndd2iu85iivzfl, .table th.tinytable_css_tr1nuzndd2iu85iivzfl { text-align: right; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+.table td.tinytable_css_ysy865uk8vn5f2gowibs, .table th.tinytable_css_ysy865uk8vn5f2gowibs { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+.table td.tinytable_css_es7enjav7jlh8b3173sf, .table th.tinytable_css_es7enjav7jlh8b3173sf { text-align: left; }
+.table td.tinytable_css_8ehau2agp6llmp45gjem, .table th.tinytable_css_8ehau2agp6llmp45gjem { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
 </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_82pn6ui0in9gkrljvk76" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_m162lsipjcsxdic78gx1" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
-                <th scope="col" data-row="0" data-col="0">attention_to_politics</th>
+                <th scope="col" data-row="0" data-col="0">education</th>
                 <th scope="col" data-row="0" data-col="1"> </th>
-                <th scope="col" data-row="0" data-col="2">Refused</th>
-                <th scope="col" data-row="0" data-col="3">Don&#39;t know</th>
-                <th scope="col" data-row="0" data-col="4">NA</th>
-                <th scope="col" data-row="0" data-col="5">Less than high school credential</th>
-                <th scope="col" data-row="0" data-col="6">High school credential</th>
-                <th scope="col" data-row="0" data-col="7">Some post-high school, no bachelor’s degree</th>
-                <th scope="col" data-row="0" data-col="8">Bachelor’s degree</th>
-                <th scope="col" data-row="0" data-col="9">Graduate degree</th>
-                <th scope="col" data-row="0" data-col="10">All</th>
+                <th scope="col" data-row="0" data-col="2">Never</th>
+                <th scope="col" data-row="0" data-col="3">Some of the time</th>
+                <th scope="col" data-row="0" data-col="4">About half the time</th>
+                <th scope="col" data-row="0" data-col="5">Most of the time</th>
+                <th scope="col" data-row="0" data-col="6">Always</th>
+                <th scope="col" data-row="0" data-col="7">NA</th>
+                <th scope="col" data-row="0" data-col="8">Refused</th>
+                <th scope="col" data-row="0" data-col="9">All</th>
               </tr>
         </thead>
         
         <tbody>
                 <tr>
-                  <td data-row="1" data-col="0">Never</td>
+                  <td data-row="1" data-col="0">Refused</td>
                   <td data-row="1" data-col="1">N</td>
                   <td data-row="1" data-col="2">3</td>
-                  <td data-row="1" data-col="3">0</td>
-                  <td data-row="1" data-col="4">0</td>
-                  <td data-row="1" data-col="5">17</td>
-                  <td data-row="1" data-col="6">34</td>
-                  <td data-row="1" data-col="7">26</td>
-                  <td data-row="1" data-col="8">17</td>
-                  <td data-row="1" data-col="9">4</td>
-                  <td data-row="1" data-col="10">101</td>
+                  <td data-row="1" data-col="3">5</td>
+                  <td data-row="1" data-col="4">3</td>
+                  <td data-row="1" data-col="5">10</td>
+                  <td data-row="1" data-col="6">5</td>
+                  <td data-row="1" data-col="7">0</td>
+                  <td data-row="1" data-col="8">0</td>
+                  <td data-row="1" data-col="9">26</td>
                 </tr>
                 <tr>
                   <td data-row="2" data-col="0"></td>
                   <td data-row="2" data-col="1">% row</td>
-                  <td data-row="2" data-col="2">3.0</td>
-                  <td data-row="2" data-col="3">0.0</td>
-                  <td data-row="2" data-col="4">0.0</td>
-                  <td data-row="2" data-col="5">16.8</td>
-                  <td data-row="2" data-col="6">33.7</td>
-                  <td data-row="2" data-col="7">25.7</td>
-                  <td data-row="2" data-col="8">16.8</td>
-                  <td data-row="2" data-col="9">4.0</td>
-                  <td data-row="2" data-col="10">100.0</td>
+                  <td data-row="2" data-col="2">11.5</td>
+                  <td data-row="2" data-col="3">19.2</td>
+                  <td data-row="2" data-col="4">11.5</td>
+                  <td data-row="2" data-col="5">38.5</td>
+                  <td data-row="2" data-col="6">19.2</td>
+                  <td data-row="2" data-col="7">0.0</td>
+                  <td data-row="2" data-col="8">0.0</td>
+                  <td data-row="2" data-col="9">100.0</td>
                 </tr>
                 <tr>
-                  <td data-row="3" data-col="0">Some of the time</td>
+                  <td data-row="3" data-col="0">Don&#39;t know</td>
                   <td data-row="3" data-col="1">N</td>
-                  <td data-row="3" data-col="2">5</td>
+                  <td data-row="3" data-col="2">0</td>
                   <td data-row="3" data-col="3">1</td>
-                  <td data-row="3" data-col="4">3</td>
-                  <td data-row="3" data-col="5">99</td>
-                  <td data-row="3" data-col="6">258</td>
-                  <td data-row="3" data-col="7">364</td>
-                  <td data-row="3" data-col="8">231</td>
-                  <td data-row="3" data-col="9">148</td>
-                  <td data-row="3" data-col="10">1109</td>
+                  <td data-row="3" data-col="4">0</td>
+                  <td data-row="3" data-col="5">0</td>
+                  <td data-row="3" data-col="6">0</td>
+                  <td data-row="3" data-col="7">0</td>
+                  <td data-row="3" data-col="8">0</td>
+                  <td data-row="3" data-col="9">1</td>
                 </tr>
                 <tr>
                   <td data-row="4" data-col="0"></td>
                   <td data-row="4" data-col="1">% row</td>
-                  <td data-row="4" data-col="2">0.5</td>
-                  <td data-row="4" data-col="3">0.1</td>
-                  <td data-row="4" data-col="4">0.3</td>
-                  <td data-row="4" data-col="5">8.9</td>
-                  <td data-row="4" data-col="6">23.3</td>
-                  <td data-row="4" data-col="7">32.8</td>
-                  <td data-row="4" data-col="8">20.8</td>
-                  <td data-row="4" data-col="9">13.3</td>
-                  <td data-row="4" data-col="10">100.0</td>
+                  <td data-row="4" data-col="2">0.0</td>
+                  <td data-row="4" data-col="3">100.0</td>
+                  <td data-row="4" data-col="4">0.0</td>
+                  <td data-row="4" data-col="5">0.0</td>
+                  <td data-row="4" data-col="6">0.0</td>
+                  <td data-row="4" data-col="7">0.0</td>
+                  <td data-row="4" data-col="8">0.0</td>
+                  <td data-row="4" data-col="9">100.0</td>
                 </tr>
                 <tr>
-                  <td data-row="5" data-col="0">About half the time</td>
+                  <td data-row="5" data-col="0">NA</td>
                   <td data-row="5" data-col="1">N</td>
-                  <td data-row="5" data-col="2">3</td>
-                  <td data-row="5" data-col="3">0</td>
+                  <td data-row="5" data-col="2">0</td>
+                  <td data-row="5" data-col="3">3</td>
                   <td data-row="5" data-col="4">5</td>
-                  <td data-row="5" data-col="5">54</td>
-                  <td data-row="5" data-col="6">201</td>
-                  <td data-row="5" data-col="7">358</td>
-                  <td data-row="5" data-col="8">294</td>
-                  <td data-row="5" data-col="9">196</td>
-                  <td data-row="5" data-col="10">1111</td>
+                  <td data-row="5" data-col="5">9</td>
+                  <td data-row="5" data-col="6">12</td>
+                  <td data-row="5" data-col="7">0</td>
+                  <td data-row="5" data-col="8">0</td>
+                  <td data-row="5" data-col="9">29</td>
                 </tr>
                 <tr>
                   <td data-row="6" data-col="0"></td>
                   <td data-row="6" data-col="1">% row</td>
-                  <td data-row="6" data-col="2">0.3</td>
-                  <td data-row="6" data-col="3">0.0</td>
-                  <td data-row="6" data-col="4">0.5</td>
-                  <td data-row="6" data-col="5">4.9</td>
-                  <td data-row="6" data-col="6">18.1</td>
-                  <td data-row="6" data-col="7">32.2</td>
-                  <td data-row="6" data-col="8">26.5</td>
-                  <td data-row="6" data-col="9">17.6</td>
-                  <td data-row="6" data-col="10">100.0</td>
+                  <td data-row="6" data-col="2">0.0</td>
+                  <td data-row="6" data-col="3">10.3</td>
+                  <td data-row="6" data-col="4">17.2</td>
+                  <td data-row="6" data-col="5">31.0</td>
+                  <td data-row="6" data-col="6">41.4</td>
+                  <td data-row="6" data-col="7">0.0</td>
+                  <td data-row="6" data-col="8">0.0</td>
+                  <td data-row="6" data-col="9">100.0</td>
                 </tr>
                 <tr>
-                  <td data-row="7" data-col="0">Most of the time</td>
+                  <td data-row="7" data-col="0">Less than high school credential</td>
                   <td data-row="7" data-col="1">N</td>
-                  <td data-row="7" data-col="2">10</td>
-                  <td data-row="7" data-col="3">0</td>
-                  <td data-row="7" data-col="4">9</td>
+                  <td data-row="7" data-col="2">17</td>
+                  <td data-row="7" data-col="3">99</td>
+                  <td data-row="7" data-col="4">54</td>
                   <td data-row="7" data-col="5">74</td>
-                  <td data-row="7" data-col="6">309</td>
-                  <td data-row="7" data-col="7">646</td>
-                  <td data-row="7" data-col="8">565</td>
-                  <td data-row="7" data-col="9">442</td>
-                  <td data-row="7" data-col="10">2055</td>
+                  <td data-row="7" data-col="6">39</td>
+                  <td data-row="7" data-col="7">0</td>
+                  <td data-row="7" data-col="8">0</td>
+                  <td data-row="7" data-col="9">283</td>
                 </tr>
                 <tr>
                   <td data-row="8" data-col="0"></td>
                   <td data-row="8" data-col="1">% row</td>
-                  <td data-row="8" data-col="2">0.5</td>
-                  <td data-row="8" data-col="3">0.0</td>
-                  <td data-row="8" data-col="4">0.4</td>
-                  <td data-row="8" data-col="5">3.6</td>
-                  <td data-row="8" data-col="6">15.0</td>
-                  <td data-row="8" data-col="7">31.4</td>
-                  <td data-row="8" data-col="8">27.5</td>
-                  <td data-row="8" data-col="9">21.5</td>
-                  <td data-row="8" data-col="10">100.0</td>
+                  <td data-row="8" data-col="2">6.0</td>
+                  <td data-row="8" data-col="3">35.0</td>
+                  <td data-row="8" data-col="4">19.1</td>
+                  <td data-row="8" data-col="5">26.1</td>
+                  <td data-row="8" data-col="6">13.8</td>
+                  <td data-row="8" data-col="7">0.0</td>
+                  <td data-row="8" data-col="8">0.0</td>
+                  <td data-row="8" data-col="9">100.0</td>
                 </tr>
                 <tr>
-                  <td data-row="9" data-col="0">Always</td>
+                  <td data-row="9" data-col="0">High school credential</td>
                   <td data-row="9" data-col="1">N</td>
-                  <td data-row="9" data-col="2">5</td>
-                  <td data-row="9" data-col="3">0</td>
-                  <td data-row="9" data-col="4">12</td>
-                  <td data-row="9" data-col="5">39</td>
+                  <td data-row="9" data-col="2">34</td>
+                  <td data-row="9" data-col="3">258</td>
+                  <td data-row="9" data-col="4">201</td>
+                  <td data-row="9" data-col="5">309</td>
                   <td data-row="9" data-col="6">171</td>
-                  <td data-row="9" data-col="7">343</td>
-                  <td data-row="9" data-col="8">277</td>
-                  <td data-row="9" data-col="9">296</td>
-                  <td data-row="9" data-col="10">1143</td>
+                  <td data-row="9" data-col="7">0</td>
+                  <td data-row="9" data-col="8">0</td>
+                  <td data-row="9" data-col="9">973</td>
                 </tr>
                 <tr>
                   <td data-row="10" data-col="0"></td>
                   <td data-row="10" data-col="1">% row</td>
-                  <td data-row="10" data-col="2">0.4</td>
-                  <td data-row="10" data-col="3">0.0</td>
-                  <td data-row="10" data-col="4">1.0</td>
-                  <td data-row="10" data-col="5">3.4</td>
-                  <td data-row="10" data-col="6">15.0</td>
-                  <td data-row="10" data-col="7">30.0</td>
-                  <td data-row="10" data-col="8">24.2</td>
-                  <td data-row="10" data-col="9">25.9</td>
-                  <td data-row="10" data-col="10">100.0</td>
+                  <td data-row="10" data-col="2">3.5</td>
+                  <td data-row="10" data-col="3">26.5</td>
+                  <td data-row="10" data-col="4">20.7</td>
+                  <td data-row="10" data-col="5">31.8</td>
+                  <td data-row="10" data-col="6">17.6</td>
+                  <td data-row="10" data-col="7">0.0</td>
+                  <td data-row="10" data-col="8">0.0</td>
+                  <td data-row="10" data-col="9">100.0</td>
                 </tr>
                 <tr>
-                  <td data-row="11" data-col="0">NA</td>
+                  <td data-row="11" data-col="0">Some post-high school, no bachelor’s degree</td>
                   <td data-row="11" data-col="1">N</td>
-                  <td data-row="11" data-col="2">0</td>
-                  <td data-row="11" data-col="3">0</td>
-                  <td data-row="11" data-col="4">0</td>
-                  <td data-row="11" data-col="5">0</td>
-                  <td data-row="11" data-col="6">0</td>
+                  <td data-row="11" data-col="2">26</td>
+                  <td data-row="11" data-col="3">364</td>
+                  <td data-row="11" data-col="4">358</td>
+                  <td data-row="11" data-col="5">646</td>
+                  <td data-row="11" data-col="6">343</td>
                   <td data-row="11" data-col="7">0</td>
-                  <td data-row="11" data-col="8">0</td>
-                  <td data-row="11" data-col="9">1</td>
-                  <td data-row="11" data-col="10">1</td>
+                  <td data-row="11" data-col="8">1</td>
+                  <td data-row="11" data-col="9">1738</td>
                 </tr>
                 <tr>
                   <td data-row="12" data-col="0"></td>
                   <td data-row="12" data-col="1">% row</td>
-                  <td data-row="12" data-col="2">0.0</td>
-                  <td data-row="12" data-col="3">0.0</td>
-                  <td data-row="12" data-col="4">0.0</td>
-                  <td data-row="12" data-col="5">0.0</td>
-                  <td data-row="12" data-col="6">0.0</td>
+                  <td data-row="12" data-col="2">1.5</td>
+                  <td data-row="12" data-col="3">20.9</td>
+                  <td data-row="12" data-col="4">20.6</td>
+                  <td data-row="12" data-col="5">37.2</td>
+                  <td data-row="12" data-col="6">19.7</td>
                   <td data-row="12" data-col="7">0.0</td>
-                  <td data-row="12" data-col="8">0.0</td>
+                  <td data-row="12" data-col="8">0.1</td>
                   <td data-row="12" data-col="9">100.0</td>
-                  <td data-row="12" data-col="10">100.0</td>
                 </tr>
                 <tr>
-                  <td data-row="13" data-col="0">Refused</td>
+                  <td data-row="13" data-col="0">Bachelor’s degree</td>
                   <td data-row="13" data-col="1">N</td>
-                  <td data-row="13" data-col="2">0</td>
-                  <td data-row="13" data-col="3">0</td>
-                  <td data-row="13" data-col="4">0</td>
-                  <td data-row="13" data-col="5">0</td>
-                  <td data-row="13" data-col="6">0</td>
-                  <td data-row="13" data-col="7">1</td>
+                  <td data-row="13" data-col="2">17</td>
+                  <td data-row="13" data-col="3">231</td>
+                  <td data-row="13" data-col="4">294</td>
+                  <td data-row="13" data-col="5">565</td>
+                  <td data-row="13" data-col="6">277</td>
+                  <td data-row="13" data-col="7">0</td>
                   <td data-row="13" data-col="8">0</td>
-                  <td data-row="13" data-col="9">0</td>
-                  <td data-row="13" data-col="10">1</td>
+                  <td data-row="13" data-col="9">1384</td>
                 </tr>
                 <tr>
                   <td data-row="14" data-col="0"></td>
                   <td data-row="14" data-col="1">% row</td>
-                  <td data-row="14" data-col="2">0.0</td>
-                  <td data-row="14" data-col="3">0.0</td>
-                  <td data-row="14" data-col="4">0.0</td>
-                  <td data-row="14" data-col="5">0.0</td>
-                  <td data-row="14" data-col="6">0.0</td>
-                  <td data-row="14" data-col="7">100.0</td>
+                  <td data-row="14" data-col="2">1.2</td>
+                  <td data-row="14" data-col="3">16.7</td>
+                  <td data-row="14" data-col="4">21.2</td>
+                  <td data-row="14" data-col="5">40.8</td>
+                  <td data-row="14" data-col="6">20.0</td>
+                  <td data-row="14" data-col="7">0.0</td>
                   <td data-row="14" data-col="8">0.0</td>
-                  <td data-row="14" data-col="9">0.0</td>
-                  <td data-row="14" data-col="10">100.0</td>
+                  <td data-row="14" data-col="9">100.0</td>
                 </tr>
                 <tr>
-                  <td data-row="15" data-col="0">All</td>
+                  <td data-row="15" data-col="0">Graduate degree</td>
                   <td data-row="15" data-col="1">N</td>
-                  <td data-row="15" data-col="2">26</td>
-                  <td data-row="15" data-col="3">1</td>
-                  <td data-row="15" data-col="4">29</td>
-                  <td data-row="15" data-col="5">283</td>
-                  <td data-row="15" data-col="6">973</td>
-                  <td data-row="15" data-col="7">1738</td>
-                  <td data-row="15" data-col="8">1384</td>
+                  <td data-row="15" data-col="2">4</td>
+                  <td data-row="15" data-col="3">148</td>
+                  <td data-row="15" data-col="4">196</td>
+                  <td data-row="15" data-col="5">442</td>
+                  <td data-row="15" data-col="6">296</td>
+                  <td data-row="15" data-col="7">1</td>
+                  <td data-row="15" data-col="8">0</td>
                   <td data-row="15" data-col="9">1087</td>
-                  <td data-row="15" data-col="10">5521</td>
                 </tr>
                 <tr>
                   <td data-row="16" data-col="0"></td>
                   <td data-row="16" data-col="1">% row</td>
-                  <td data-row="16" data-col="2">0.5</td>
-                  <td data-row="16" data-col="3">0.0</td>
-                  <td data-row="16" data-col="4">0.5</td>
-                  <td data-row="16" data-col="5">5.1</td>
-                  <td data-row="16" data-col="6">17.6</td>
-                  <td data-row="16" data-col="7">31.5</td>
-                  <td data-row="16" data-col="8">25.1</td>
-                  <td data-row="16" data-col="9">19.7</td>
-                  <td data-row="16" data-col="10">100.0</td>
+                  <td data-row="16" data-col="2">0.4</td>
+                  <td data-row="16" data-col="3">13.6</td>
+                  <td data-row="16" data-col="4">18.0</td>
+                  <td data-row="16" data-col="5">40.7</td>
+                  <td data-row="16" data-col="6">27.2</td>
+                  <td data-row="16" data-col="7">0.1</td>
+                  <td data-row="16" data-col="8">0.0</td>
+                  <td data-row="16" data-col="9">100.0</td>
+                </tr>
+                <tr>
+                  <td data-row="17" data-col="0">All</td>
+                  <td data-row="17" data-col="1">N</td>
+                  <td data-row="17" data-col="2">101</td>
+                  <td data-row="17" data-col="3">1109</td>
+                  <td data-row="17" data-col="4">1111</td>
+                  <td data-row="17" data-col="5">2055</td>
+                  <td data-row="17" data-col="6">1143</td>
+                  <td data-row="17" data-col="7">1</td>
+                  <td data-row="17" data-col="8">1</td>
+                  <td data-row="17" data-col="9">5521</td>
+                </tr>
+                <tr>
+                  <td data-row="18" data-col="0"></td>
+                  <td data-row="18" data-col="1">% row</td>
+                  <td data-row="18" data-col="2">1.8</td>
+                  <td data-row="18" data-col="3">20.1</td>
+                  <td data-row="18" data-col="4">20.1</td>
+                  <td data-row="18" data-col="5">37.2</td>
+                  <td data-row="18" data-col="6">20.7</td>
+                  <td data-row="18" data-col="7">0.0</td>
+                  <td data-row="18" data-col="8">0.0</td>
+                  <td data-row="18" data-col="9">100.0</td>
                 </tr>
         </tbody>
       </table>
@@ -2613,7 +2620,7 @@ vertical-align: -.125em;
 <blockquote class="blockquote">
 <p>Describe the relationship between these two variables (if one exists).</p>
 </blockquote>
-<p>Higher education is associated with higher political attention. Those with lower education are more likely to only “sometimes of the times”. Those with higher education (especially graduate degrees) are much more likely to pay attention “Most of the time” or “Always.”</p>
+<p>Higher education is associated with higher political attention, people with higher levels of education tend to pay more attention to politics. Those with lower education are more likely to only pay attention to politic in sometimes of the times. Those with higher education (especially graduate degrees) are much more likely to pay attention with Most of the time or Always pay attention to politic.</p>
 </section>
 </section>
 <section id="question-4" class="level2">
@@ -2623,7 +2630,7 @@ vertical-align: -.125em;
 <blockquote class="blockquote">
 <p>Describe how you would construct a cross-tab to evaluate my hypothesis. Which responses (religious identification or support for Federal funding) would you compare within? Relatedly, which would you vary? Finally, what statistics would you use to make your comparisons?</p>
 </blockquote>
-<p>In this cross-tab, I will have religious identification as the independent variable, and support for Federal funding as dependent variable. Thus I will know the relationship between these two variables. The table will include the number and proportion of respondents for each level of funding according to how often they attend religious ceremonies.</p>
+<p>In this cross-tab, I will have religious identification(attendance) as the independent variable, and support for Federal funding as dependent variable. Thus I will know the relationship between these two variables. The table will include the number and proportion of respondents for each level of funding according to how often they attend religious ceremonies. If the hypothesis is true, I would find higher proportions of respondents who regularly attend religious events select “too much.” And the crosss-tab data would show people who are identify as being religious less likely to support Federal government funding of scientific research.</p>
 </section>
 <section id="question-5" class="level2">
 <h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
@@ -2685,8 +2692,8 @@ vertical-align: -.125em;
 
     <script>
 
-      function styleCell_yu15l4eezimp3v9hp87z(i, j, css_id) {
-          var table = document.getElementById("tinytable_yu15l4eezimp3v9hp87z");
+      function styleCell_eeev7e7jqfyopcelo6fa(i, j, css_id) {
+          var table = document.getElementById("tinytable_eeev7e7jqfyopcelo6fa");
           var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -2695,8 +2702,8 @@ vertical-align: -.125em;
               console.warn(`Cell at (${i}, ${j}) not found.`);
           }
       }
-      function spanCell_yu15l4eezimp3v9hp87z(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_yu15l4eezimp3v9hp87z");
+      function spanCell_eeev7e7jqfyopcelo6fa(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_eeev7e7jqfyopcelo6fa");
         const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
         if (!targetCell) {
           console.warn(`Cell at (${i}, ${j}) not found.`);
@@ -2727,18 +2734,18 @@ vertical-align: -.125em;
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '8', j: 4 }, { i: '8', j: 3 }, { i: '8', j: 2 }, { i: '8', j: 5 },  ], css_id: 'tinytable_css_8tlxodlhpa9bfvbkmlov',}, 
-          { positions: [ { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '3', j: 4 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '1', j: 2 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '3', j: 5 }, { i: '5', j: 2 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '7', j: 5 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '5', j: 3 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 },  ], css_id: 'tinytable_css_76liwdr5chm7laaammz4',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 5 }, { i: '0', j: 4 }, { i: '0', j: 3 },  ], css_id: 'tinytable_css_n5ex3rusv9chxamavqpg',}, 
-          { positions: [ { i: '8', j: 0 }, { i: '8', j: 1 },  ], css_id: 'tinytable_css_e178abiugqckpcrsbaae',}, 
-          { positions: [ { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '1', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 }, { i: '3', j: 1 }, { i: '5', j: 0 }, { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '7', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 },  ], css_id: 'tinytable_css_5m4tu0wlv9ymkcu1qn5l',}, 
-          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 },  ], css_id: 'tinytable_css_ifnn47hgg41avp9q0f8e',}, 
+          { positions: [ { i: '8', j: 4 }, { i: '8', j: 3 }, { i: '8', j: 2 }, { i: '8', j: 5 },  ], css_id: 'tinytable_css_zqj17h6uvsyvdobl0etu',}, 
+          { positions: [ { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '3', j: 4 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '1', j: 2 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '3', j: 5 }, { i: '5', j: 2 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '7', j: 5 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '5', j: 3 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 },  ], css_id: 'tinytable_css_4luahqhumkcjhhxjr1ve',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 5 }, { i: '0', j: 4 }, { i: '0', j: 3 },  ], css_id: 'tinytable_css_pb9k8r7bpxj8tqfzg9ug',}, 
+          { positions: [ { i: '8', j: 0 }, { i: '8', j: 1 },  ], css_id: 'tinytable_css_si7g75mqn1afrzgzgwp5',}, 
+          { positions: [ { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '1', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 }, { i: '3', j: 1 }, { i: '5', j: 0 }, { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '7', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 },  ], css_id: 'tinytable_css_3i4ukcmks87gzg72n950',}, 
+          { positions: [ { i: '0', j: 0 }, { i: '0', j: 1 },  ], css_id: 'tinytable_css_9gqhyh6drlj8r0nr32js',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_yu15l4eezimp3v9hp87z(cell.i, cell.j, group.css_id);
+                  styleCell_eeev7e7jqfyopcelo6fa(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -2746,15 +2753,15 @@ vertical-align: -.125em;
 
     <style>
 
-.table td.tinytable_css_8tlxodlhpa9bfvbkmlov, .table th.tinytable_css_8tlxodlhpa9bfvbkmlov { text-align: right; border-bottom: solid #d3d8dc 0.1em; }
-.table td.tinytable_css_76liwdr5chm7laaammz4, .table th.tinytable_css_76liwdr5chm7laaammz4 { text-align: right; }
-.table td.tinytable_css_n5ex3rusv9chxamavqpg, .table th.tinytable_css_n5ex3rusv9chxamavqpg { text-align: right; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-.table td.tinytable_css_e178abiugqckpcrsbaae, .table th.tinytable_css_e178abiugqckpcrsbaae { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
-.table td.tinytable_css_5m4tu0wlv9ymkcu1qn5l, .table th.tinytable_css_5m4tu0wlv9ymkcu1qn5l { text-align: left; }
-.table td.tinytable_css_ifnn47hgg41avp9q0f8e, .table th.tinytable_css_ifnn47hgg41avp9q0f8e { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+.table td.tinytable_css_zqj17h6uvsyvdobl0etu, .table th.tinytable_css_zqj17h6uvsyvdobl0etu { text-align: right; border-bottom: solid #d3d8dc 0.1em; }
+.table td.tinytable_css_4luahqhumkcjhhxjr1ve, .table th.tinytable_css_4luahqhumkcjhhxjr1ve { text-align: right; }
+.table td.tinytable_css_pb9k8r7bpxj8tqfzg9ug, .table th.tinytable_css_pb9k8r7bpxj8tqfzg9ug { text-align: right; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+.table td.tinytable_css_si7g75mqn1afrzgzgwp5, .table th.tinytable_css_si7g75mqn1afrzgzgwp5 { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+.table td.tinytable_css_3i4ukcmks87gzg72n950, .table th.tinytable_css_3i4ukcmks87gzg72n950 { text-align: left; }
+.table td.tinytable_css_9gqhyh6drlj8r0nr32js, .table th.tinytable_css_9gqhyh6drlj8r0nr32js { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
 </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_yu15l4eezimp3v9hp87z" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-borderless" id="tinytable_eeev7e7jqfyopcelo6fa" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>

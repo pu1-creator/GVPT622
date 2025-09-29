@@ -90,7 +90,7 @@ I would like to know whether individuals with higher levels of education tend to
 
 ```{r}
 
-datasummary_crosstab(attention_to_politics ~ education, data = nes2024)
+datasummary_crosstab(education ~ attention_to_politics, data = nes2024)
 ```
 
 ### Part B
@@ -99,7 +99,7 @@ datasummary_crosstab(attention_to_politics ~ education, data = nes2024)
 
 > Describe the relationship between these two variables (if one exists).
 
-Higher education is associated with higher political attention. Those with lower education are more likely to  only "sometimes of the times". Those with higher education (especially graduate degrees) are much more likely to pay attention “Most of the time” or “Always.”
+Higher education is associated with higher political attention, people with higher levels of education tend to pay more attention to politics. Those with lower education are more likely to only pay attention to politic in sometimes of the times. Those with higher education (especially graduate degrees) are much more likely to pay attention with Most of the time or Always pay attention to politic.
 
 ## Question 4
 
@@ -109,7 +109,7 @@ I hypothesize that US voters who identify as being religious are less likely to 
 
 > Describe how you would construct a cross-tab to evaluate my hypothesis. Which responses (religious identification or support for Federal funding) would you compare within? Relatedly, which would you vary? Finally, what statistics would you use to make your comparisons?
 
-In this cross-tab, I will have religious identification as the independent variable, and support for Federal funding as dependent variable. Thus I will know the relationship between these two variables. The table will include the number and proportion of respondents for each level of funding according to how often they attend religious ceremonies.
+In this cross-tab, I will have religious identification(attendance) as the independent variable, and support for Federal funding as dependent variable. Thus I will know the relationship between these two variables. The table will include the number and proportion of respondents for each level of funding according to how often they attend religious ceremonies. If the hypothesis is true, I would find higher proportions of respondents who regularly attend religious events select “too much.” And the crosss-tab data would show people who are identify as being religious less likely to support Federal government funding of scientific research.
 
 ## Question 5
 
