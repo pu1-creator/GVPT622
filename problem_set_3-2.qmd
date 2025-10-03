@@ -8,12 +8,15 @@ toc: true
 editor: visual
 execute: 
   warning: false
-
 ---
 
 Please upload your completed assignment to the ELMs course site (under the assignments menu) and to your class Github repository. You need to upload both your Quarto document (with R code, as needed) and its rendered output (either as a PDF or HTML file).
 
-**Total points: 27**
+**Total points: 29**
+
+::: callout-note
+29/29
+:::
 
 ```{r}
 dem_wealth_df <- readr::read_csv("http://svmiller.com/extdata/democracy-income-1950.csv") |> 
@@ -40,6 +43,10 @@ library(modelsummary)
 
 *Points: 2*
 
+::: callout-note
+2/2
+:::
+
 > Using the `dem_wealth_df` data frame loaded in above, produce a scatter plot of the variables `democracy_score` and `gdp_per_cap` (with `gdp_per_cap` as the dependent variable on the y-axis). Professionally format your graph.
 
 ```{r}
@@ -53,6 +60,10 @@ dem_wealth_df %>% ggplot(aes(x = democracy_score, y = gdp_per_cap, na.rm = T)) +
 ### Part B
 
 *Points: 3*
+
+::: callout-note
+3/3
+:::
 
 > Describe the scatter plot. Note suspected outliers if any exist (a visual inspection will suffice for this question).
 
@@ -70,6 +81,10 @@ Two points at Democracy Score \~1 with GDP per capita exceeding \$15,000 also st
 
 *Points: 2*
 
+::: callout-note
+2/2
+:::
+
 > Calculate the correlation coefficient between `democracy_score` and `gdp_per_cap`. What does it tell you about the relationship between a country's level of democracy and its citizens' wealth?
 
 ```{r}
@@ -86,6 +101,10 @@ I would like to know whether individuals with higher levels of education tend to
 
 *Points: 5*
 
+::: callout-note
+5/5
+:::
+
 > Using the `nes2024` data set in the `polisciols` R package, construct a cross-tab of the relationship between `attention_to_politics` and `education`.
 
 ```{r}
@@ -97,6 +116,10 @@ datasummary_crosstab(education ~ attention_to_politics, data = nes2024)
 
 *Points: 3*
 
+::: callout-note
+3/3
+:::
+
 > Describe the relationship between these two variables (if one exists).
 
 Higher education is associated with higher political attention, people with higher levels of education tend to pay more attention to politics. Those with lower education are more likely to only pay attention to politic in sometimes of the times. Those with higher education (especially graduate degrees) are much more likely to pay attention with Most of the time or Always pay attention to politic.
@@ -104,6 +127,10 @@ Higher education is associated with higher political attention, people with high
 ## Question 4
 
 *Points: 5*
+
+::: callout-note
+5/5
+:::
 
 I hypothesize that US voters who identify as being religious are less likely to support Federal government funding of scientific research. To test this, I run a survey of a representative sample of the US voting population. I ask respondents to indicate how often they attend religious ceremonies as a proxy measure of how strongly they identify as religious. They can answer: never, only for significant events, or regularly. Next, I ask respondents whether they think the Federal government's funding of scientific research is "too little", "about right", or "too much".
 
@@ -118,6 +145,10 @@ Let's return to our original question of the relationship between democracy and 
 ### Part A
 
 *Points: 2*
+
+::: callout-note
+2/2
+:::
 
 > Create two new variables based on a country's level of democracy, and its citizens' wealth. For the democracy variable, split countries into three categories: `autocracy` if they score in the lowest third of democracy scores, `hybrid` if they score in the middle third, and `democracy` if they score in the highest third. Similarly, for the wealth variable, split countries into three categories: `low income` if they score in the lowest third of GDP per capita, `middle income` if they score in the middle third, and `high income` if they score in the highest third.
 
@@ -148,6 +179,10 @@ dem_wealth_lv
 
 *Points: 3*
 
+::: callout-note
+3/3
+:::
+
 > Create a cross-tab.
 
 ```{r}
@@ -155,9 +190,14 @@ dem_wealth_lv
 datasummary_crosstab(levelOfDemocracy ~ levelOfWealth, data = dem_wealth_lv)
 
 ```
+
 ### Part C
 
 *Points: 5*
+
+::: callout-note
+5/5
+:::
 
 > Describe the relationship between these variables.
 
@@ -169,5 +209,4 @@ Democracies are overwhelmingly high-income.
 
 Hybrid regimes fall in between, but lean towards lower income levels.
 
-The higher level of democracy is associated with higher income and lower evel of democracy is associated with lower income, while hybrid regimes are somewhat transitional across income levels. 
-
+The higher level of democracy is associated with higher income and lower evel of democracy is associated with lower income, while hybrid regimes are somewhat transitional across income levels.
