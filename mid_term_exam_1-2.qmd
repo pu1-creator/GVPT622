@@ -334,7 +334,7 @@ ggplot(data = renewables, aes(x = gdp_per_cap)) +
 ```
 Answer:
 
-The distribution is skewed to right.
+The distribution of GDP per capita across countries globally is skewed to right.
 
 #### Part C
 
@@ -352,6 +352,7 @@ renewwealth
 renewlog<- renewables %>%
   ggplot(aes(x = renewables_use, y = log_gdp_per_cap)) +
   geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") 
   labs(title = "Relationship between renewable energy use and wealth",
        x = "Renewable Energy Use",
        y = "Log GDP per capita")+
