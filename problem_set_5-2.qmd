@@ -13,6 +13,11 @@ execute:
 Please upload your completed assignment to the ELMs course site (under the assignments menu) and to your class Github repository. You need to upload both your Quarto document (with R code, as needed) and its rendered output (either as a PDF or HTML file).
 
 **Total points: 25**
+
+::: callout-note
+23/25
+:::
+
 ```{r}
 library(tidyverse) 
 library(skimr) 
@@ -25,6 +30,7 @@ library(polisciols)
 library(modelsummary)
 library(readr)
 ```
+
 ## Question 1
 
 *Total points: 6*
@@ -47,6 +53,10 @@ tibble::tibble(
 
 *Points: 2*
 
+::: callout-note
+2/2
+:::
+
 What is the probability of being 25-30 or a non-voter?
 
 ```{r}
@@ -61,14 +71,20 @@ voting <- tibble(
 voting
 
 ```
+
 ```{r}
 (90 + 330 - 40)/1000
 ```
+
 The Answer is 0.38
 
 ### Part B
 
 *Points: 4*
+
+::: callout-note
+2/4
+:::
 
 Assuming a normal distribution, report the 95% confidence intervals for the percentage of 18-to-24-year-olds who did not vote, and then the percentage of 25-to-30-year-olds who did not vote.
 
@@ -82,6 +98,7 @@ Assuming a normal distribution, report the 95% confidence intervals for the perc
 
 (40/90) - 1.96*sqrt((40/90 * (1 - 40/90) ) / 90)
 ```
+
 95% confidence intervals for the percentage of 18-to-24-year-olds who did not vote is between 49.51% to 67.15%
 
 95% confidence intervals for the percentage of 25-to-30-year-olds who did not vote is between 34.18% to 54.71%
@@ -92,20 +109,25 @@ Assuming a normal distribution, report the 95% confidence intervals for the perc
 
 Assume that the standard deviation for the population distribution of a state in which you want to conduct a poll is 200.
 
-
 ### Part A
 
 *Points: 3*
 
+::: callout-note
+3/3
+:::
+
 Calculate the spread of the sampling distribution for each of the following sample sizes: 1, 4, 25, 100, 250, 1000, 5,000, and 10,000.
 
-
 The Answer is `r 200/sqrt(1)`,`r 200/sqrt(4)`,`r 200/sqrt(25)`,`r 200/sqrt(100)`,`r 200/sqrt(250)`,`r 200/sqrt(1000)`,`r 200/sqrt(5000)`,`r 200/sqrt(10000)`,
-
 
 ### Part B
 
 *Points: 1*
+
+::: callout-note
+1/1
+:::
 
 Describe specifically how the variability of the sampling distribution changes as the sample size varies. Considering the expense of running a poll, which sample size do you think is most optimal if conducting the poll?
 
@@ -116,6 +138,10 @@ For a poll which we do want a larger size, 1000 is a good size, as the variabili
 ### Part C
 
 *Points: 3*
+
+::: callout-note
+3/3
+:::
 
 Display your results graphically (using R) with the sample size on the x-axis and the standard error (of the sampling distribution) on the y-axis.
 
@@ -137,9 +163,14 @@ Graph1 <- ggplot (data1, aes(x = SSize, y = SSE))+
 
 Graph1
 ```
+
 ## Question 3
 
 *Points: 4*
+
+::: callout-note
+4/4
+:::
 
 Suppose you conduct a survey (to generate a sample mean of interest) and find that it has a margin of error of 4.5 with a sample size of 900 using a 95% confidence interval. What would the margin of error be for a 90% confidence interval?
 
@@ -149,9 +180,9 @@ Suppose you conduct a survey (to generate a sample mean of interest) and find th
 1.645*68.87755/sqrt(900)
 ```
 
-Since 4.5 = Z * σ/ sqrt(900), which means σ = (4.5/1.96) * 30 = 68.87755
+Since 4.5 = Z \* σ/ sqrt(900), which means σ = (4.5/1.96) \* 30 = 68.87755
 
-Z for 90% confidence interval is 1.645, then the new margin of error is 1.645*68.87755/sqrt(900), so the answer is 3.776786
+Z for 90% confidence interval is 1.645, then the new margin of error is 1.645\*68.87755/sqrt(900), so the answer is 3.776786
 
 ## Question 4
 
@@ -170,9 +201,9 @@ Assume that, in State A, the mean income in the population is \$20,000 with a st
 1 - 0.6915
 ```
 
-The SE in size of 900 is 66.66667,  with the smaple mean of 20200, then Z score is (20200 - 20000)/66.66667 = 3. In a normal distribution, when Z >= 3, the probability is 1 − 0.99865 = 0.00135.
+The SE in size of 900 is 66.66667, with the smaple mean of 20200, then Z score is (20200 - 20000)/66.66667 = 3. In a normal distribution, when Z \>= 3, the probability is 1 − 0.99865 = 0.00135.
 
-The SE in size of 25 is 400, with the smaple mean of 20200, then Z score is (20200 - 20000)/400 = 0.5. In a normal distribution, when Z >= 3, the probability is 1 − 0.6916 = 0.3085.
+The SE in size of 25 is 400, with the smaple mean of 20200, then Z score is (20200 - 20000)/400 = 0.5. In a normal distribution, when Z \>= 3, the probability is 1 − 0.6916 = 0.3085.
 
 ::: callout-note
 Assume a normal distribution for both questions.
@@ -181,6 +212,10 @@ Assume a normal distribution for both questions.
 ## Question 5
 
 *Points: 4*
+
+::: callout-note
+4/4
+:::
 
 Assume that a coin is fair. If I flip a coin 500 times, what is a 95% confidence interval for the range of the count of heads that I will get? What if I flip the coin 5,000 times? What about 50,000 times?
 
@@ -198,4 +233,5 @@ the possibility of a fair coin with head is 0.5, the distribution of range of th
 (0.5 - 1.96 * sqrt(0.5 * (1- 0.5) / 50000)) * 50000
 
 ```
+
 The Answer for 500 times is 272 to 228, the range is 44; the Answer for 5000 times is 2431 to 2569 is range is 196; the Answer for 50000 is between 25220 to 24780, the range is 620.
