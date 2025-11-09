@@ -1,0 +1,192 @@
+---
+title: "Problem Set 7"
+subtitle: "Due date: 4 November"
+format: 
+  html:
+    self-contained: true
+toc: true
+editor: visual
+execute: 
+  echo: true
+  warning: false
+---
+
+Please upload yourmpleted assignment to the ELMs course site (under the assignments menu) and to your class Github repository. You need to upload both your Quarto document (with R code, as needed) and its rendered output (either as a PDF or HTML file).
+
+**Total points: 20**
+
+## Question 1
+
+*Total points: 10*
+
+I hypothesize that the older someone is, the more they like watching golf. I conduct a survey based on an SRS of adults in America. The independent variable is a four-category measure of age: 21-35, 36-50, 51-65, 66-plus. The dependent variable is a three-category measure of how much they enjoy watching golf: not at all, somewhat, very much.
+
+```{r}
+library(tidyverse) 
+library(skimr) 
+library(janitor) 
+library(ggsci) 
+library(MetBrewer)
+library(devtools)
+library(polisciols)
+library(modelsummary)
+library(readr)
+library(broom)
+library(infer)
+library(scales)
+
+```
+
+### Part A
+
+*Points: 4*
+
+Make a cross-tab, by hand, of the relationship between these two variables based on the following (completely made up) data. Make sure that you present both raw counts and the appropriate percentages to examine the relationship.
+
+```{r}
+age_golf_df <- tibble::tibble(
+  age = c("21-35", "51-65", "66-plus", "21-35", "36-50", "21-35", "36-50",
+          "66-plus", "36-50", "51-65", "51-65", "21-35", "36-50", "21-35",
+          "66-plus", "51-65", "36-50", "66-plus", "51-65", "21-35", "66-plus",
+          "21-35", "36-50", "66-plus", "21-35", "36-50", "21-35", "66-plus",
+          "51-65", "51-65", "66-plus", "21-35", "66-plus", "21-35", "51-65",
+          "66-plus", "21-35", "36-50", "36-50", "66-plus"),
+  preference = c("Somewhat", "Not at all", "Very much", "Not at all", "Somewhat",
+                 "Not at all", "Not at all", "Somewhat", "Very much", "Very much",
+                 "Somewhat", "Not at all", "Somewhat", "Very much", "Not at all",
+                 "Not at all", "Somewhat", "Somewhat", "Very much", "Somewhat",
+                 "Very much", "Somewhat", "Very much", "Somewhat", "Not at all",
+                 "Very much", "Somewhat", "Somewhat", "Somewhat", "Very much",
+                 "Not at all", "Not at all", "Very much", "Somewhat", "Very much",
+                 "Very much", "Somewhat", "Somewhat", "Somewhat", "Not at all")
+)
+
+age_golf_df
+```
+
+```{r}
+age_golf_df %>%
+  tabyl(age, preference) %>%
+  adorn_totals("row") %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting(digits = 2) %>%
+  adorn_ns()
+```
+
+### Part B
+
+*Points: 2*
+
+Do the data support my hypothesis? Be sure to explain the nature of the relationship (or lack thereof, if relevant).
+
+Answer: I think the data supports the hypothesis: the age group under 35 have 41.67% would not watch the gulf at all, but the age group above 66 have only 27.27% would not watch gulf at all.
+
+### Part C
+
+*Points: 2*
+
+Compute (by hand) the chi-square statistic to test the null hypothesis of no relationship between these two variables. Be sure to show your work.
+
+```{r}
+obs_values <- count(age_golf_df, age, preference, name = "obs_n")
+
+
+age_totals <- count(age_golf_df, age, name = "age_total")
+
+
+preference_totals <- count(age_golf_df, preference, name = "preference_total")
+
+
+obs_exp_counts <- age_totals %>% 
+  expand_grid(preference_totals) %>% 
+  relocate(age) %>% 
+  mutate(exp_n = (age_total * preference_total) / nrow(age_golf_df)) %>% 
+  left_join(obs_values, by = c("preference", "age"))
+
+obs_exp_counts
+```
+
+```{r}
+chi_sq <- obs_exp_counts %>% 
+  mutate(diff = obs_n - exp_n,
+         diff_2 = diff^2,
+         diff_2_standard = diff_2 / exp_n)  %>%  
+  summarise(chi_sq = sum(diff_2_standard)) %>% 
+  pull()
+
+chi_sq
+```
+
+Answer: The chi-square is 6.09
+
+### Part D
+
+*Points: 2*
+
+Using the chi-square statistic that you computed in question 1(c), can you reject the null hypothesis of no relationship between these two variables with 95% confidence? Why, or why not?
+
+```{r}
+pchisq(chi_sq, df = 6, lower.tail = F)
+```
+
+Based on the chi-square test , the resulting p-value of 0.41 is greater than 0.05. This difference is not statistically significant. Therefore, we fail to reject the null hypothesis of no relationship between age and golf preference at the 95% confidence level.
+
+## Question 2
+
+*Points: 10*
+
+I hypothesize that people with higher levels of education tend to be more likely to pay higher levels of attention to politics. Use the `nes2024` dataset from the `polisciols` package to test my hypothesis. Create a cross-tab examining the relationship between individuals' levels of education (`education`) and the time they spend paying attention to politics (`attention_to_politics`).
+
+Do the data support my hypothesis? Be sure to explain the nature of the relationship (or lack thereof, if relevant). Report a chi-square statistic. What does the chi-square statistic tell you about whether you can reject the null hypothesis of no relationship between these two variables with 95% confidence? Why, or why not?
+
+```{r}
+nes1 <- polisciols::nes2024 %>% 
+  select("education", "attention_to_politics") %>% 
+  mutate(across(c(education, attention_to_politics), as.character)) %>% 
+  filter(!education %in% c("Refused", "Don't know")) %>% 
+  filter(!attention_to_politics %in% c("Refused", "Don't know")) %>% 
+  drop_na()
+
+nes1
+```
+
+```{r}
+datasummary_crosstab(attention_to_politics ~ education, data = nes1, statistic = 1 ~ 1 + N + Percent("col"))
+
+```
+
+The data support the hypothesis that individuals with higher levels of education tend to pay more attention to politics. Among those who *always* pay attention, the proportion of college and graduate degree holders is much higher than among individuals with lower levels of education. A similar pattern appears among those who pay attention *most of the time*: the higher the education level, the greater the proportion within that group. Conversely, in the *sometimes* and *never* categories, the proportions are much higher among respondents with lower educational attainment than among those with college or graduate degrees.
+
+```{r}
+obs_values <- count(nes1, attention_to_politics, education, name = "obs_n")
+
+edu_totals <- count(nes1, education, name = "edu_total")
+
+atp_totals <- count(nes1, attention_to_politics, name = "atp_total")
+
+obs_exp_counts <- atp_totals |> 
+  expand_grid(edu_totals) |> 
+  relocate(education) |> 
+  # Calculated the expected values
+  mutate(exp_n = (atp_total * edu_total) / nrow(nes1)) |>
+  # Add the observed values for comparison
+  left_join(obs_values, by = c("education", "attention_to_politics"))
+
+obs_exp_counts
+
+```
+
+```{r}
+chi_sq_2 <- obs_exp_counts |> 
+  mutate(diff = obs_n - exp_n,
+         diff_2 = diff^2,
+         diff_2_standard = diff_2 / exp_n) |> 
+  summarise(chi_sq = sum(diff_2_standard)) |> 
+  pull()
+chi_sq_2
+
+pchisq(chi_sq_2, df = 16, lower.tail = F)
+
+```
+
+Based on the chi-square test , the resulting p-value is much lower than 0.05. This difference is statistically significant. Therefore, we can reject the null hypothesis of no relationship between education and attention to politics at the 95% confidence level.
