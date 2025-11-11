@@ -186,7 +186,7 @@ chi_sq_2 <- obs_exp_counts %>%
 chi_sq_2
 
 pchisq(chi_sq_2, df = 16, lower.tail = F)
-
+#check
 chisq.test(nes1$education, nes1$attention_to_politics)
 
 ```
