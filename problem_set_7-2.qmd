@@ -15,6 +15,10 @@ Please upload yourmpleted assignment to the ELMs course site (under the assignme
 
 **Total points: 20**
 
+::: callout-note
+19/20
+:::
+
 ## Question 1
 
 *Total points: 10*
@@ -40,6 +44,10 @@ library(scales)
 ### Part A
 
 *Points: 4*
+
+::: callout-note
+4/4
+:::
 
 Make a cross-tab, by hand, of the relationship between these two variables based on the following (completely made up) data. Make sure that you present both raw counts and the appropriate percentages to examine the relationship.
 
@@ -77,13 +85,25 @@ age_golf_df %>%
 
 *Points: 2*
 
+::: callout-note
+1/2
+:::
+
 Do the data support my hypothesis? Be sure to explain the nature of the relationship (or lack thereof, if relevant).
 
 Answer: I think the data supports the hypothesis: the age group under 35 have 41.67% would not watch the gulf at all, but the age group above 66 have only 27.27% would not watch gulf at all.
 
+::: callout-note
+Looking across your categories, it is hard to see a relationship. It is certainly not linear.
+:::
+
 ### Part C
 
 *Points: 2*
+
+::: callout-note
+2/2
+:::
 
 Compute (by hand) the chi-square statistic to test the null hypothesis of no relationship between these two variables. Be sure to show your work.
 
@@ -123,6 +143,10 @@ Answer: The chi-square is 6.09
 
 *Points: 2*
 
+::: callout-note
+2/2
+:::
+
 Using the chi-square statistic that you computed in question 1(c), can you reject the null hypothesis of no relationship between these two variables with 95% confidence? Why, or why not?
 
 ```{r}
@@ -134,6 +158,10 @@ Based on the chi-square test , the resulting p-value of 0.41 is greater than 0.0
 ## Question 2
 
 *Points: 10*
+
+::: callout-note
+10/10
+:::
 
 I hypothesize that people with higher levels of education tend to be more likely to pay higher levels of attention to politics. Use the `nes2024` dataset from the `polisciols` package to test my hypothesis. Create a cross-tab examining the relationship between individuals' levels of education (`education`) and the time they spend paying attention to politics (`attention_to_politics`).
 
@@ -192,5 +220,3 @@ chisq.test(nes1$education, nes1$attention_to_politics)
 ```
 
 Based on the chi-square test , the resulting p-value is much lower than 0.05. This difference is statistically significant. Therefore, we can reject the null hypothesis of no relationship between education and attention to politics at the 95% confidence level.
-
-
