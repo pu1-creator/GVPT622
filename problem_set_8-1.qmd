@@ -13,6 +13,11 @@ execute:
 Please upload your completed assignment to the ELMs course site (under the assignments menu). Remember to include an annotated script file for all work with R and show your math for all other problems (if applicable, or necessary). Please also upload your completed assignment to the Github repository that you have shared with us. *We should be able to run your script with no errors.*
 
 **Total points: 30**
+
+::: callout-note
+Only load packages you need to use.
+:::
+
 ```{r}
 library(tidyverse) 
 library(skimr) 
@@ -32,6 +37,10 @@ library(scales)
 ## Question 1
 
 *Points: 5*
+
+::: callout-note
+5/5
+:::
 
 For the following regression equation, $\hat{Y} = 8.5 + 6x + \epsilon$, the standard error for $\beta_0$ is 2.5, the standard error for $\beta_1$ is 3.5, and the sample size is 2000. Find the t-statistic, 95% confidence interval, and p-value (using a two-tailed test) for $\beta_1$.
 
@@ -53,6 +62,10 @@ Answer: T-statistic is 1.714286, as df is 1998. The 95% confidence interval is (
 
 *Points: 5*
 
+::: callout-note
+5/5
+:::
+
 Suppose you estimate an OLS regression and retrieve a $R^2$ value of 0.45. If the Total Sum of Squares (TSS) from that regression equals 4,700, what is the value for the Residual Sum of Squares (RSS)?
 
 ```{r}
@@ -70,6 +83,10 @@ Answer: Since R\^2 = 1 - RSS/TSS, we have RSS for 2585.
 
 *Points: 5*
 
+::: callout-note
+5/5
+:::
+
 Suppose you estimate a bivariate regression with a sample size of 102 and obtain a regression coefficient ($\beta_1$) of 5.0. What is the largest standard error that $\beta_1$ could have and still be statistically significant (i.e., reject the null hypothesis of no relationship) at the 0.05 level with a one-tailed test?
 
 ```{r}
@@ -77,11 +94,15 @@ Suppose you estimate a bivariate regression with a sample size of 102 and obtain
 
 ```
 
-Since we have a sample size of 102, the DF would be 102-1-1 = 100. With the one tailed test, the t for df = 100, level of 0.05 is 1.66. And the SE =  $\beta_1$ / t, SE = 3.012048.
+Since we have a sample size of 102, the DF would be 102-1-1 = 100. With the one tailed test, the t for df = 100, level of 0.05 is 1.66. And the SE = $\beta_1$ / t, SE = 3.012048.
 
 ## Question 4
 
 *Points: 5*
+
+::: callout-note
+5/5
+:::
 
 ```{r}
 gapminder_df <- wbstats::wb_data(c("NY.GDP.PCAP.CD", "SP.DYN.LE00.IN"),
@@ -94,6 +115,7 @@ Using the `gapminder_df` data set read in above, produce a scatterplot of the va
 ::: callout-note
 The variable `gdp_per_cap` measures each country's GDP per capita (representing their individual wealth), and `life_exp` indicates the number of years individuals within that country born that year are expected to live (representing their health).
 :::
+
 ```{r}
 ggplot(gapminder_df, aes(x = gdp_per_cap, y = life_exp)) + 
   geom_point() + 
@@ -110,6 +132,10 @@ The scatterplot shows a positive but nonlinear relationship between GDP per capi
 
 *Points: 10*
 
+::: callout-note
+7/10
+:::
+
 Estimate a bivariate regression with `life_exp` as the dependent variable and `gdp_per_cap` as the independent variable and report the results in a professionally formatted table. In as much detail as possible, describe (and interpret) the regression results.
 
 ```{r}
@@ -121,9 +147,29 @@ modelsummary(m,
              coef_rename = c("gdp_per_cap" = "Level of Wealth"),
              statistic = c("conf.int", "p.value"))
 ```
-1. The coefficient is positive and highly statistically significant, We can be confident that GDP per capita is positively associated with life expectancy. And Every 1 dollar increase in GDP per capita is associated with ~0.00018 additional years of life expectancy. So every $1000 increase in GDP per capita is associated with 0.18 additional years of life expectancy.
 
+::: callout-note
+Good job changing the variable label, but you still want to be clear which metric you are using. A better label is "GDP per capita".
+:::
 
-2. When Level of Wealth is equal to zero, the predicted value of the dependent variable is approximately 69.74. The confidence interval is very narrow, and the coefficient is highly statistically significant. estimated precisely. And for the level of Wealth, it is statistically significant but substantively negligible in its marginal effect.
+::: callout-note
+As you identified above, the relationship is not linear. GDP per capita should be logged.
+:::
 
+1.  The coefficient is positive and highly statistically significant, We can be confident that GDP per capita is positively associated with life expectancy. And Every 1 dollar increase in GDP per capita is associated with \~0.00018 additional years of life expectancy. So every \$1000 increase in GDP per capita is associated with 0.18 additional years of life expectancy.
 
+2.  When Level of Wealth is equal to zero, the predicted value of the dependent variable is approximately 69.74. The confidence interval is very narrow, and the coefficient is highly statistically significant. estimated precisely. And for the level of Wealth, it is statistically significant but substantively negligible in its marginal effect.
+
+::: callout-note
+Statistical significance is binary: you either have it, or you don't. Something cannot be "highly statistically significant".
+:::
+
+::: callout-note
+Remember, these estimated effects are "on average".
+:::
+
+::: callout-note
+"And Every 1 dollar increase in GDP per capita is associated with \~0.00018 additional years of life expectancy. So every \$1000 increase in GDP per capita is associated with 0.18 additional years of life expectancy."
+
+This phrasing is causal, which is inappropriate given your observational research design. A better phrasing is this: "Under the fitted model, the average difference in life expectancy, comparing a country that has a GDP per capita \$1,000 higher than another, is 0.18 years".
+:::
