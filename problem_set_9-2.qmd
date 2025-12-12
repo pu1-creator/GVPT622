@@ -1,0 +1,180 @@
+---
+title: "Problem Set 9"
+subtitle: "Due date: 9 December"
+format: 
+  html:
+    self-contained: true
+toc: true
+editor: visual
+execute: 
+  echo: true
+  warning: false
+  message: false
+---
+
+Please upload your completed assignment to the ELMs course site (under the assignments menu). Remember to include an annotated script file for all work with R and show your math for all other problems (if applicable, or necessary). Please also upload your completed assignment to the Github repository that you have shared with us. *We should be able to run your script with no errors.*
+
+**Total points: 40**
+
+::: callout-note
+38/40
+:::
+
+```{r}
+library(tidyverse) 
+library(skimr) 
+library(janitor) 
+library(ggsci) 
+library(MetBrewer)
+library(devtools)
+library(polisciols)
+library(modelsummary)
+library(readr)
+library(broom)
+library(infer)
+library(scales)
+library(plotly)
+library(marginaleffects)
+```
+
+## Question 1
+
+*Points: 10*
+
+::: callout-note
+10/10
+:::
+
+Table 1 below reports the results from two regression models. In Model 1 in Table 1 $Y$ is regressed on $X_1$ and, in Model 2, $Y$ is regressed on both $X_1$ and $X_2$. Why might $X_1$ be statistically significant at conventional levels in Model 1 but statistically insignificant in Model 2? Be as specific as possible.
+
+![](images/ps9.png){fig-align="center"}
+
+Answer: Firstly, The X2 is correlated to both X1 & Y. Besides, while the coefficient for X1 decreases is the second model, A one-unit change in X1 has a smaller effect on Y, on average and holding all else constant. Thus the X2 has more explanatory power than X1. So the relationship between X1 and Y is actually driven by X2.
+
+## Question 2
+
+*Points: 10*
+
+::: callout-note
+9/10
+:::
+
+Using the `censusAggregate` dataset (posted on ELMs), which is survey data aggregated to the state level (1972-2000), estimate a regression with `vote` as the dependent variable and the following independent variables: `nonSouth`, `edr`, and `pcthsg`. Report the results in a professionally formatted table and interpret the regression results.
+
+Also, create a figure to display the predicted values (with confidence intervals) for the effect of `pcthsg` on the turnout rate. Lastly, is it meaningful to interpret the constant term on its own? Why, or why not?
+
+::: callout-note
+`vote` is the turnout rate in a state in a given year (i.e., the number of people who voted divided by the number eligible to vote).
+
+`nonSouth` is a dummy variable equal to `0` for Southern states and a `1` for non-Southern states.
+
+`pcthsg` is the percentage of the population in a state that graduated high school.
+
+`edr` is a dummy variable equal to `1` for states that used election-day registration and a `0` for states without election-day registration.
+:::
+
+```{r}
+CA <- read_csv("censusAggregate-1.csv")
+
+CA_re <- lm(vote ~ nonSouth + edr + pcthsg, data = CA)
+
+summary(CA_re)
+
+modelsummary(CA_re, 
+             coef_rename = c( vote = "The turnout rate",
+                             nonSouth = "non-Southern states",
+                             pcthsg = "the percentage of high school degree population",
+                             edr = "election-day registration"),
+             statistic = c("t = {statistic}", "SE = {std.error}", "conf.int"))
+```
+
+From the regression, I find that all of the IVs have positive estimated effects on the DV, and they are statistically significant.Their the strength of estimated effect is different that the percentage of the population in a state that graduated high school's effect is quite smaller than non-Southern states and election-day registration.
+
+::: callout-note
+Do not directly compare the estimated effects of changes in IVs that are not measured in the same units. You are comparing a one-percentage point increase to a binary switch.
+:::
+
+Under the fitted model, the average turnout rate, holding all other variables constant, comparing two state-year, the non-Southern one is 5.54% higher than the one from Southern State. And the average turnout rate, holding all other variables constant, comparing two state-year, the one with election-day registration is 5.79% higher than the other one. Uner the same condition, the average turnout rate, holding all other variables constant, comparing two state-year, with the increase of one percentage of the population in a state that graduated high school, only have 0.1% increase in turnout rate.
+
+```{r}
+plot_predictions(CA_re, condition = "pcthsg") +
+       labs(title = "Predicted Voter Turnout by Percentage of School Graduates",
+       caption = "confidence interval = [0.030, 0.172]",
+       x = "Percentage of high school graduates in population",
+       y = "Predicted voter turnout rate")
+```
+
+No, it is not meaningful to interpret the constant term of pcthsg on its own. Although The intercept is highly statistically significant and the confidence interval is tight, it is not meaningful to interpret it.
+
+Under this model, the constant value represents the average state turnout rate for a state when when all independent variables equal zero. And 0% high school education is not realistic, the scenario that defines the intercept does not exist in the real world.
+
+## Question 3
+
+*Points: 5*
+
+::: callout-note
+5/5
+:::
+
+A linear regression model of the turnout rate in a state (`vote`) estimated by the percentage of the population in a state that graduated high school (`pcthsg`) alone shows this sole independent variable to be less likely to be observed if it had no explanatory power (the null were true) compared to the fuller model estimated in the last question. Why is this the case?
+
+Answer: pcthsg seems more significant in the bivariate model because it is taking credit for explaining turnout that really should be attributed to nonSouth and edr. Thus, even if only some of the association between education and turnout is real, the simple regression attributes all of the shared variance to education.
+
+Once those variables are included, the unique contribution of education becomes smaller and its standard errors increase due to shared variance, making it less significant.
+
+## Question 4
+
+*Points: 15*
+
+::: callout-note
+14/15
+:::
+
+Using one of the other data sets available in the `poliscidata` package pick one dependent variable and two or more independent variables. Run a regression of the dependent variable on the independent variables. In your answer, describe why you picked the variables you did, produce a professionally formatted results table, and describe your statistical and substantive findings.
+
+This analysis examines the determinants of dictatorship durability using data from the poliscidata package. The dependent variable is the number of years since the last regime transition. The independent variables include ethnic fractionalization, military spending as a percentage of GDP, and income inequality.
+
+Thus the I create the data of dictatorship regime first, with the variable: #regime_type3 Regime type (Cheibub’s Democracy Dictatorship dataset)
+
+And my DV is: #durable Number of years since the last regime transition (Polity)
+
+```{r}
+data(world, package = "poliscidata")
+mil <- world
+
+Dic <- mil %>% filter(regime_type3 == "Dictatorship")
+```
+
+Then I have variables selected based on theories such as political instability theory, which predicts that ethnically fragmented societies are more prone to conflict. And authoritarian survival depends on coercive capacity, and inequality can generate redistributive pressures that destabilize regimes.(Michael K. Miller, 2020) [The Autocratic Ruling Parties Dataset: Origins, Durability, and Death](https://www.jstor.org/stable/48596916?seq=5)
+
+So I have following variables: #spendmil Public expenditure on the military as a percentage of GDP, 2008 (UN) #gini10 Income Gini coefficient, 2000-2010 (UN) #frac_eth frac_eth Ethnic factionalization (combined linguistic and racial)
+
+```{r}
+m <- lm (durable ~  spendmil + gini10 + frac_eth, data = Dic)
+
+summary(m)
+
+modelsummary(m, 
+             coef_rename = c( spendmil = "spendmil",
+                             gini10 = "gini10"),
+             statistic = c("t = {statistic}", "SE = {std.error}", "conf.int"))
+
+glance(m) |> 
+  select(r.squared)
+```
+
+::: callout-note
+Make your variable names more human-friendly.
+:::
+
+The results show that ethnic fractionalization has a strong and statistically significant negative association with dictatorship durability. Under the fitted model, the average difference in regime durability, comparing two dictatorships with the same level of military spending and income inequality but a 0.10 increase in ethnic fractionalization, is a decrease of approximately 2.80 years.
+
+In contrast, neither military spending nor income inequality has a statistically significant effect.
+
+Under the fitted model, the average difference in regime durability, comparing two dictatorships with the same level of income inequality and ethnic fractionalization but a one–percentage-point difference in military spending (as a share of GDP), is 0.69 years. However, this effect is not statistically significant (p = 0.63).
+
+Under the fitted model, the average difference in regime durability, comparing two dictatorships with the same level of military spending and ethnic fractionalization but a one-unit difference in the Gini coefficient, is a decrease of 0.07 years. This effect is small and statistically insignificant (p = 0.83).
+
+The model explains approximately 18% of the variation in regime durability, which is reasonable for cross-national data. Overall, the findings suggest that social fragmentation is a key structural threat to authoritarian regime longevity, while economic inequality and military expenditure play a much weaker role.
+
+\`\`\`
